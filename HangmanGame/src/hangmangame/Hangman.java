@@ -15,14 +15,14 @@ public class Hangman {
     /*
      * ATTRIBUTES
      */
-    String secretWord;
-    String disguisedWord;
-    String userGuess;
-    int guessCount = 0;
-    int incorrectGuesses = 0;
-    int position;
-    int parsing;
-    int valid;
+   private String secretWord;
+   private String disguisedWord;
+   private String userGuess;
+   private int guessCount = 0;
+   private int incorrectGuesses = 0;
+   private int position;
+   private int parsing;
+   private int valid;
 
 
     /*
