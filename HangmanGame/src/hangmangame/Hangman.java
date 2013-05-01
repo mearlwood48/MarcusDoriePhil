@@ -137,7 +137,7 @@ public class Hangman {
 
             if (userGuess.charAt(0) == (secretWord.charAt(i)) && userGuess.length() == 1) {
                 updatedDisguisedWord = updatedDisguisedWord + secretWord.charAt(i);
-                guessCount++;
+                guessCount++;//something wrong it want to count it want to douuble it
                 System.out.print(guessCount);
             }//end of if charAt equal charAt
             else {
