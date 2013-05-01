@@ -18,8 +18,8 @@ public class Hangman {
     private String secretWord;
     private String disguisedWord;
     private String userGuess;
-    private int guessCount = 0;
-    private int incorrectGuesses = 0;
+    private int guessCount;
+    private int incorrectGuesses;
     private int position;
     private int parsing;
     private int valid;
