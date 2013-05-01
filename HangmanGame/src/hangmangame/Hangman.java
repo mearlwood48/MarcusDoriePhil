@@ -15,14 +15,14 @@ public class Hangman {
     /*
      * ATTRIBUTES
      */
-   private String secretWord;
-   private String disguisedWord;
-   private String userGuess;
-   private int guessCount = 0;
-   private int incorrectGuesses = 0;
-   private int position;
-   private int parsing;
-   private int valid;
+    private String secretWord;
+    private String disguisedWord;
+    private String userGuess;
+    private int guessCount = 0;
+    private int incorrectGuesses = 0;
+    private int position;
+    private int parsing;
+    private int valid;
 
 
     /*
@@ -69,6 +69,7 @@ public class Hangman {
 
     public boolean wordFound() {
         if (secretWord.equalsIgnoreCase(disguisedWord)) {
+            showResult();
             return true;
         } else {
             return false;
@@ -86,16 +87,16 @@ public class Hangman {
         if (inputGuess.isEmpty()) {
             System.exit(0);
         }
-        while (inputGuess.length() != 1) {
-            inputGuess = JOptionPane.showInputDialog("Incorrect entry. The disguised word is " + disguisedWord
-                    + "\nGuess Count = " + guessCount
-                    + "\nIncorrect Guesses = " + incorrectGuesses
-                    + "\nGuess a letter (a-z), number (0-9), space or dash(-):");
-
-            if (inputGuess.isEmpty()) {
-                System.exit(0);
-            } // end if validation loop
-        } // end while loop
+//        while (inputGuess.length() != 1) {
+//            inputGuess = JOptionPane.showInputDialog("Incorrect entry. The disguised word is " + disguisedWord
+//                    + "\nGuess Count = " + guessCount
+//                    + "\nIncorrect Guesses = " + incorrectGuesses
+//                    + "\nGuess a letter (a-z), number (0-9), space or dash(-):");
+//
+//            if (inputGuess.isEmpty()) {
+//                System.exit(0);
+//            } // end if validation loop
+//        } // end while loop
         return inputGuess;
 
     } // end get user guess method
@@ -111,7 +112,7 @@ public class Hangman {
         parsing = 1;
         position = 0;
         valid = 0;
-        guessCount++;
+        //guessCount++;
         while (parsing == 1) {
             position = secretWord.indexOf(guess, position);
             if (position != -1) {
@@ -129,10 +130,30 @@ public class Hangman {
     }
 
     // Markus is working on This
-    public String updateDisguisedWord(int position) {
+    public void updateDisguisedWord(int position) {
 
-        System.out.println("Position: " + position + "  Guesses: " + guessCount + "  Incorrect: " + incorrectGuesses); //debugging code
-        return disguisedWord;
+        String updatedDisguisedWord = "";
+        for (int i = 0; i < secretWord.length(); i++) {
+
+            if (userGuess.charAt(0) == (secretWord.charAt(i)) && userGuess.length() == 1) {
+                updatedDisguisedWord = updatedDisguisedWord + secretWord.charAt(i);
+                guessCount++;
+                System.out.print(guessCount);
+            }//end of if charAt equal charAt
+            else {
+                updatedDisguisedWord = updatedDisguisedWord + disguisedWord.charAt(i);
+            }//end of else
+        }
+
+        //System.out.println("Position: " + position + "  Guesses: " + guessCount + "  Incorrect: " + incorrectGuesses); //debugging code
+
+
+        if (userGuess.equals(secretWord)) {
+            updatedDisguisedWord = secretWord;
+        }
+
+
+        disguisedWord = updatedDisguisedWord;
     }
     /*
      * WEB METHODS
